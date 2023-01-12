@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django with Mosh</title>
+</head>
+<body>
+        <h1>Hello World!</h1>
+        {% if name %}
+        <center><h2>This is a {{ name }} course!</h2></center>
+        {% else %}
+        <h3>This is not a Django Course!</h3>
+        {% endif %}
+
+        <!-- <ul>
+            {% for product in products%}
+            <ul>
+              <li>{{ product.title }} - {{ product.collection.title }}</li>
+                Price:  {{ product.unit_price }}</li>
+
+            </ul>
+            
+            {% endfor %}
+        </ul> -->
+    
+        <ul>
+            {% for order in orders%}
+              <li>{{ order.id }} {{order.orderitem_set.product}} - {{ order.customer.first_name }}</li>
+            {% endfor %}
+        </ul>
+    
+</body>
+</html>
