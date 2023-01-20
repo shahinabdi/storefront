@@ -85,6 +85,13 @@ def orm_test(request):
     #query_set = Product.objects.prefetch_related('promotion').all()
     #query_set = Product.objects.prefetch_related('promotions').select_related('collection').all()
     
-    query_set = Order.objects.select_related('customer').prefetch_related('orderitem_set__product').all().order_by('-placed_at')[:5]
+    #query_set = Order.objects.select_related('customer').prefetch_related('orderitem_set__product').all().order_by('-placed_at')[:5]
     
-    return render(request, 'index.html', {'name': 'Django', 'orders': list(query_set)})
+    #return render(request, 'index.html', {'name': 'Django', 'orders': list(query_set)})
+
+    # Aggregate
+    from django.db.models.aggregates import Count, Min, Max, Avg, Sum
+
+    result = OrderItem.objects.filter(product__id=1).aggregate(units_sold=Sum('quantity'))
+    
+    return render(request, 'index.html', {'name': 'Django', 'result': result})
