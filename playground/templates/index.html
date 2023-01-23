@@ -30,6 +30,17 @@
               <li>{{ order.id }} {{order.orderitem_set.product}} - {{ order.customer.first_name }}</li>
             {% endfor %}
         </ul>
-    {{ result }}
+    <!-- {{ result }} -->
+
+    <!-- <ul>
+        {% for res in result%}
+          <li>{{ res.first_name }} - {{ res.orders_count }}</li>
+        {% endfor %}
+    </ul>  -->
+    <ul>
+        {% for res in result%}
+          <li>{{ res.discounted_price }}</li>
+        {% endfor %}
+    </ul> 
 </body>
 </html>
